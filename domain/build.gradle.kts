@@ -6,8 +6,6 @@ import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackConfig
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
-    alias(libs.plugins.jetbrainsCompose)
-    alias(libs.plugins.compose.compiler)
 }
 
 kotlin {
@@ -41,28 +39,12 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             // put your Multiplatform dependencies here
-            implementation(libs.kotlinx.coroutines.core)
-            implementation(compose.runtime)
-            implementation(projects.domain)
-
-        }
-
-        iosMain.dependencies {
-            implementation(libs.skie.annotations)
-        }
-
-        androidMain.dependencies {
-            implementation(libs.skie.annotations)
-        }
-
-        jvmMain.dependencies {
-            implementation(libs.skie.annotations)
         }
     }
 }
 
 android {
-    namespace = "com.zeeeeej.xlibrary.shared"
+    namespace = "com.zeeeeej.xlibrary.domain"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
